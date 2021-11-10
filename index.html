@@ -8,11 +8,11 @@
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
         />
-        <title>Document</title>
+        <title>Vue</title>
     </head>
     <body>
         <div id="root">
-            <h2>Vue 예제</h2>
+            <h2 style="margin: 20px 20px 20px 20px">Vue 예제</h2>
             <ul class="list-group">
                 <li class="list-group-item" v-for="(item, index) in items">
                     <a v-bind:href="item.url">{{ index+1 }}.{{ item.label }}</a>
