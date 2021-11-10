@@ -13,8 +13,8 @@
     <body>
         <div id="root">
             <h2>Vue 예제</h2>
-            <ul>
-                <li v-for="(item, index) in items">
+            <ul class="list-group">
+                <li class="list-group-item" v-for="(item, index) in items">
                     <a v-bind:href="item.url">{{ index+1 }}.{{ item.label }}</a>
                 </li>
             </ul>
@@ -34,10 +34,14 @@
             data: {
                 items: [
                     {
-                        label: "예제1",
+                        label: "예제1 좋아요 버튼",
                         url:
                             path +
                             "/example/1.%EC%A2%8B%EC%95%84%EC%9A%94%20%EB%B2%84%ED%8A%BC/like.html",
+                    },
+                    {
+                        label: "예제2 구구단",
+                        url: path + "/example/2.구구단/gugudan.html",
                     },
                 ],
             },

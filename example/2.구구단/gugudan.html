@@ -1,21 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
-	<div id="root">
-	
-	</div>
-</body>
-<script>
-	const app = new Vue({
-		el : '#root'	
-		data : ""
-	})
-</script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <style>
+            #root > form {
+                margin: 20px 60px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root">
+            <form v-on:submit="onSubmitForm">
+                <p>{{first}} 곱하기 {{second}} 는?</p>
+                <input type="number" v-model="answer" />
+                <button type="submit">입력</button>
+                <div id="result">{{result}}</div>
+            </form>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#root",
+            data: {
+                first: Math.ceil(Math.random() * 9),
+                second: Math.ceil(Math.random() * 9),
+                answer: "",
+                result: "",
+            },
+            methods: {
+                onSubmitForm(e) {
+                    e.preventDefault();
+                    console.log(
+                        this.first * this.second === parseInt(this.answer)
+                    );
+                    if (this.first * this.second === parseInt(this.answer)) {
+                        this.result = "정답";
+                        this.setData();
+                    } else {
+                        this.result = "땡";
+                        this.answer = "";
+                    }
+                },
+                setData() {
+                    this.first = Math.ceil(Math.random() * 9);
+                    this.second = Math.ceil(Math.random() * 9);
+                    this.answer = "";
+                    this.result = "";
+                },
+            },
+        });
+    </script>
 </html>
