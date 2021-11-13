@@ -15,7 +15,7 @@
             <h2 style="margin: 20px 20px 20px 20px">Vue 예제</h2>
             <ul class="list-group">
                 <li class="list-group-item" v-for="(item, index) in items">
-                    <a v-bind:href="item.url">{{ index+1 }}.{{ item.label }}</a>
+                    <a v-bind:href="item.url">{{ item.label }}</a>
                 </li>
             </ul>
         </div>
@@ -34,16 +34,20 @@
             data: {
                 items: [
                     {
-                        label: "예제 WebPack 예제",
-                        url: path + "/example/99_WebPack/example.html",
-                    },
-                    {
                         label: "예제1 좋아요 버튼",
                         url: path + "/example/1_좋아요버튼/like.html",
                     },
                     {
                         label: "예제2 구구단",
                         url: path + "/example/2_구구단/gugudan.html",
+                    },
+                    {
+                        label: "예제3 끝말잇기",
+                        url: path + "/example/3_끝말잇기/WordRelay.html",
+                    },
+                    {
+                        label: "예제 WebPack 예제",
+                        url: path + "/example/99_WebPack/example.html",
                     },
                 ],
             },
