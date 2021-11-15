@@ -14,6 +14,9 @@
     </head>
     <body>
         <div id="root">
+            <div>
+                <progress id="progress" value="10" max="10"></progress>
+            </div>
             <form v-on:submit="onSubmitForm">
                 <p>{{first}} 곱하기 {{second}} 는?</p>
                 <input type="number" v-model="answer" />
