@@ -21,7 +21,7 @@ function getCreatedBalls() {
     const candidate = Array(45)
         .fill()
         .map((v, i) => i + 1);
-    const shuffle = [];             
+    const shuffle = [];
     while (candidate.length > 0) {
         shuffle.push(
             candidate.splice(Math.floor(Math.random() * candidate.length), 1)[0]
