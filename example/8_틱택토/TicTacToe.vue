@@ -10,9 +10,9 @@ export default {
     data() {
         return {
             tableData: [
-                ["o", "x", "o"],
-                ["x", "o", "x"],
-                ["o", "x", "o"],
+                ["", "", ""],
+                ["", "", ""],
+                ["", "", ""],
             ],
         };
     },
@@ -31,5 +31,7 @@ Table {
 Table > tr,
 td {
     border: 1px solid #444444;
+    text-align: center;
+    font-size: 30px;
 }
 </style>

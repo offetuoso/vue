@@ -18,7 +18,7 @@ export default {
         rowData: Array,
         rowIndex: Number,
     },
-    compnents: {
+    components: {
         TdComponent,
     },
 };
