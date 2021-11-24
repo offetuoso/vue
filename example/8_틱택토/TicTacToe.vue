@@ -1,7 +1,13 @@
 <template>
-    <table-component :table-data="tableData" />
+    <div>
+        <table-component :table-data="tableData" />
+        <div>
+            <h2>{{ turn }}님의 턴입니다.</h2>
+        </div>
+    </div>
 </template>
 <script>
+import Vue from "vue";
 import TableComponent from "./TableComponent";
 export default {
     components: {
@@ -14,7 +20,14 @@ export default {
                 ["", "", ""],
                 ["", "", ""],
             ],
+            turn: "O",
         };
+    },
+    methods: {
+        onChageData: function (rowIndex, cellIndex, turn) {
+            // this.tableData[1][0] = 'X'; //동작하지 않음 인덱스로 접근 시 문제
+            this.$set(this.tableData[rowIndex], cellIndex, turn); //Vue.set(this.tableData[1], 0, "X");
+        },
     },
     computed: {},
     methods: {},
