@@ -26,7 +26,6 @@ export default {
             this.$root.$data.turn = this.$root.$data.turn === "O" ? "X" : "O";
 
             this.$root.$data;
-            console.log(this.$root.$data.turn);
         },
     },
 };
