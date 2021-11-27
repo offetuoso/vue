@@ -2,6 +2,7 @@
     <div>
         <table-component :table-data="tableData" />
         <div>
+            <h2 v-if="result">{{ result }}</h2>
             <h2>{{ turn }}님의 턴입니다.</h2>
         </div>
     </div>
@@ -21,6 +22,8 @@ export default {
                 ["", "", ""],
             ],
             turn: "O",
+            turnCnt: 0,
+            result: "",
         };
     },
     methods: {
@@ -45,6 +48,8 @@ Table > tr,
 td {
     border: 1px solid #444444;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
 }
 </style>
