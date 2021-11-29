@@ -70,9 +70,9 @@ export default {
                 return false;
             }
 
-            console.log(this.tries);
-            console.log(this.tries.length);
-            console.log(this.tries[0]);
+            //console.log(this.tries);
+            //console.log(this.tries.length);
+            //console.log(this.tries[0]);
             ckecked = this.checkQuestion(answer);
             this.tries.push({
                 try: ckecked.try,

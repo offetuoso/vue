@@ -143,7 +143,7 @@ export default new Vuex.Store({
 
             checkAround(row, cell);
 
-            console.log(state.data.row * state.data.cell - state.data.mine, state.openedCount);
+            //console.log(state.data.row * state.data.cell - state.data.mine, state.openedCount);
             if (state.data.row * state.data.cell - state.data.mine === state.openedCount) {
                 state.halted = true;
                 state.result = "[" + state.timer + "]초 만에 클리어!!";
