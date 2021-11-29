@@ -50,7 +50,6 @@ export default {
         },
         cellDataText() {
             return (row, cell) => {
-                //console.log(row, cell, this.$store.state.tableData[row][cell]);
                 switch (this.$store.state.tableData[row][cell]) {
                     case CODE.MINE:
                     //return "X";
