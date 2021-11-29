@@ -26,7 +26,7 @@ import {
 } from "./store";
 export default {
     computed: {
-        ...mapState(["tableData", "halted"]),
+        ...mapState(["tableData", "halted", "openedCnt", "result"]),
         cellDataStyle() {
             return (row, cell) => {
                 switch (this.$store.state.tableData[row][cell]) {
@@ -53,8 +53,9 @@ export default {
                 //console.log(row, cell, this.$store.state.tableData[row][cell]);
                 switch (this.$store.state.tableData[row][cell]) {
                     case CODE.MINE:
-                        return "X";
+                    //return "X";
                     case CODE.NORMAL:
+                    case CODE.OPENED:
                         return "";
                     case CODE.FLAG:
                     case CODE.FLAG_MINE:
@@ -65,7 +66,7 @@ export default {
                     case CODE.CLICKED_MINE:
                         return "펑";
                     default:
-                        return "";
+                        return this.$store.state.tableData[row][cell];
                 }
             };
         },
@@ -75,7 +76,7 @@ export default {
             if (this.halted) {
                 return false;
             }
-            console.log(row, cell);
+            //console.log(row, cell);
             if (this.$store.state.tableData[row][cell] === CODE.NORMAL) {
                 this.$store.commit(OPEN_CELL, { row, cell });
             } else if (this.$store.state.tableData[row][cell] === CODE.MINE) {
@@ -86,7 +87,6 @@ export default {
             if (this.halted) {
                 return false;
             }
-
             switch (this.$store.state.tableData[row][cell]) {
                 case CODE.NORMAL:
                 case CODE.MINE:
@@ -100,24 +100,6 @@ export default {
                 default:
                     return;
             }
-
-            /*console.log(row, cell);
-            if (
-                this.$store.state.tableData[row][cell] === CODE.NORMAL ||
-                this.$store.state.tableData[row][cell] === CODE.MINE
-            ) {
-                this.$store.commit(FLAG_CELL, { row, cell });
-            } else if (
-                this.$store.state.tableData[row][cell] === CODE.FLAG ||
-                this.$store.state.tableData[row][cell] === CODE.FLAG_MINE
-            ) {
-                this.$store.commit(QUESTION_CELL, { row, cell });
-            } else if (
-                this.$store.state.tableData[row][cell] === CODE.QUESTION ||
-                this.$store.state.tableData[row][cell] === CODE.QUESTION_MINE
-            ) {
-                this.$store.commit(NORMALIZE_CELL, { row, cell });
-            }*/
         },
     },
 };
