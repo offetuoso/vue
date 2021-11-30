@@ -2,7 +2,7 @@
     <table>
         <tr v-for="(rowData, rowIndex) in tableData" :key="rowIndex">
             <td
-                @click="onClickTd(rowIndex, cellIndex)"
+                @click.prevent="onClick(rowIndex, cellIndex)"
                 @contextmenu.prevent="onRightClickTd(rowIndex, cellIndex)"
                 v-for="(cellData, cellIndex) in rowData"
                 :key="cellIndex"
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+let timeoutId = null;
 import { mapState } from "vuex";
 import {
     CODE,
@@ -70,12 +71,32 @@ export default {
             };
         },
     },
+    data() {
+        return {
+            delay: 500,
+            clicks: 0,
+            timer: null,
+        };
+    },
     methods: {
+        onClick(row, cell) {
+            this.clicks++;
+            if (this.clicks === 1) {
+                this.timer = setTimeout(() => {
+                    this.clicks = 0;
+                    this.onClickTd(row, cell);
+                }, this.delay);
+            } else {
+                clearTimeout(this.timer);
+                this.clicks = 0;
+                this.onRightClickTd(row, cell);
+            }
+        },
         onClickTd(row, cell) {
             if (this.halted) {
                 return false;
             }
-            //console.log(row, cell);
+            console.log("onClickTd", row, cell);
             if (this.$store.state.tableData[row][cell] === CODE.NORMAL) {
                 this.$store.commit(OPEN_CELL, { row, cell });
             } else if (this.$store.state.tableData[row][cell] === CODE.MINE) {
