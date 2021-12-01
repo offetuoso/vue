@@ -26,7 +26,7 @@ export default {
     computed: {
         computedStyleObject() {
             return {
-                background: `URL("./images/RPS.jpg") ${this.imgCoord} 0`,
+                background: `URL("./images/RPS.jpg") ${this.imgCoord} `,
             };
         },
     },
