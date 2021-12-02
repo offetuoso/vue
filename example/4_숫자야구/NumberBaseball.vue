@@ -13,6 +13,7 @@
             <button type="submit">입력</button>
         </form>
         <div>
+            {{ question }}
             <p>남은시도 : {{ 10 - tries.length }}</p>
             <ul>
                 <li v-for="(item, index) in tries" :key="index">
@@ -37,11 +38,13 @@ const getQuestion = () => {
 };
 
 export default {
-    data: {
-        tries: [],
-        value: "",
-        result: "",
-        question: getQuestion(),
+    data() {
+        return {
+            tries: [],
+            value: "",
+            result: "",
+            question: getQuestion(),
+        };
     },
     methods: {
         onSubmitForm(e) {
